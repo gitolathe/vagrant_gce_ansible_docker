@@ -8,9 +8,9 @@
     region: "{{ ec2_region }}"
     image: "{{ ec2_ami_id }}"
     wait: true
-    exact_count: 2
-    count_tag:
-      name: "{{ ec2_instance_name }}"
-    instance_tags:
-      Name: "{{ ec2_tag_Name }}"
+#    exact_count: 2
+#    count_tag:
+#      name: "{{ ec2_instance_name }}"
+    instance_tags: "{{ item.tags }}"
   register: ec2
+  with_items: "{{ ec2_instances }}"
